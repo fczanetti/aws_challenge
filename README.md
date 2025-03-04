@@ -1,6 +1,6 @@
 # AWS Challenge [WIP]
 
-I recently asked ChatGPT for a challenge to create a simple application using Python, Django and some AWS tools, specifically API-Gateway, Lambda and S3. The goal was to develop some AWS skills, and here's what it returned. The links to the repositories and some important notes that I took while developing will be [on this other file]().
+I recently asked ChatGPT for a challenge to create a simple application using Python, Django and some AWS tools, specifically API-Gateway, Lambda and S3. The goal was to develop some AWS skills, and here's what it returned. The links to the repositories and some important notes that I took while developing will be [on this other file](https://github.com/fczanetti/aws_challenge/blob/main/development.md).
 
 ### ChatGPT answer:
 
