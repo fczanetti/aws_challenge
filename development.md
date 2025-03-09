@@ -1,7 +1,7 @@
 ## Repositories
 
-- https://github.com/fczanetti/lambda_aws_challenge
 - https://github.com/fczanetti/django_aws_challenge
+- https://github.com/fczanetti/lambdas_aws_challenge
 
 ## Creating and configuring API - Gateway
 To create an API - Gateway I followed these steps:
