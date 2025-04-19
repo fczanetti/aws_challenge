@@ -1,3 +1,31 @@
+## Flow diagram
+
+```mermaid
+flowchart LR
+
+Q(Client - Django app) -->|1 - Send image| AG(API Gateway) -->|2 - Forward image| L(Lambda sendImageToS3) -->|3 - Put image to S3| S(S3 Bucket)
+```
+
+```mermaid
+flowchart LR
+
+S(S3 Bucket) --> |4 - Notification| SQS(SQS Queue) --> |5 - Lambda Trigger| L2(Lambda processImageFromS3)
+
+```
+
+```mermaid
+flowchart LR
+
+L2(Lambda processImageFromS3) -->|6 - Get image from S3| GI(Process image) --> |7 - Put image to S3| S(S3 Bucket)
+```
+
+```mermaid
+flowchart LR
+
+Q(Client - Django app) -->|8 - Generate presigned URL| S(S3 Bucket) --> |9 - URL| DQ(Client - Django App) -->|10 - URL| T(Template)
+```
+
+
 ## Repositories
 
 - https://github.com/fczanetti/django_aws_challenge
