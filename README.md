@@ -1,3 +1,30 @@
+## Flow diagram
+
+```mermaid
+flowchart LR
+
+Q(Client - Django app) -->|1 - Send image| AG(API Gateway) -->|2 - Forward image| L(Lambda sendImageToS3) -->|3 - Put image to S3| S(S3 Bucket)
+```
+
+```mermaid
+flowchart LR
+
+S(S3 Bucket) --> |4 - Notification| SQS(SQS Queue) --> |5 - Lambda Trigger| L2(Lambda processImageFromS3)
+
+```
+
+```mermaid
+flowchart LR
+
+L2(Lambda processImageFromS3) -->|6 - Get image from S3| GI(Process image) --> |7 - Put image to S3| S(S3 Bucket)
+```
+
+```mermaid
+flowchart LR
+
+Q(Client - Django app) -->|8 - Generate presigned URL| S(S3 Bucket) --> |9 - URL| DQ(Client - Django App) -->|10 - URL| T(Template)
+```
+
 # AWS Challenge [WIP]
 
 I recently asked ChatGPT for a challenge to create a simple application using Python, Django and some AWS tools, specifically API-Gateway, Lambda and S3. The goal was to develop some AWS skills, and here's what it returned. The links to the repositories and some important notes that I took while developing will be [on this other file](https://github.com/fczanetti/aws_challenge/blob/main/development.md).
