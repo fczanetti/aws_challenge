@@ -4,25 +4,12 @@
 flowchart LR
 
 Q(Client - Django app) -->|1 - Send image| AG(API Gateway) -->|2 - Forward image| L(Lambda sendImageToS3) -->|3 - Put image to S3| S(S3 Bucket)
-```
 
-```mermaid
-flowchart LR
+S3(S3 Bucket) --> |4 - Notification| SQS(SQS Queue) --> |5 - Lambda Trigger| L2(Lambda processImageFromS3)
 
-S(S3 Bucket) --> |4 - Notification| SQS(SQS Queue) --> |5 - Lambda Trigger| L2(Lambda processImageFromS3)
+L22(Lambda processImageFromS3) -->|6 - Get image from S3| GI(Process image) --> |7 - Put image to S3| S33(S3 Bucket)
 
-```
-
-```mermaid
-flowchart LR
-
-L2(Lambda processImageFromS3) -->|6 - Get image from S3| GI(Process image) --> |7 - Put image to S3| S(S3 Bucket)
-```
-
-```mermaid
-flowchart LR
-
-Q(Client - Django app) -->|8 - Generate presigned URL| S(S3 Bucket) --> |9 - URL| DQ(Client - Django App) -->|10 - URL| T(Template)
+Q2(Client - Django app) -->|8 - Generate presigned URL| S333(S3 Bucket) --> |9 - URL| DQ(Client - Django App) -->|10 - URL| T(Template)
 ```
 
 # AWS Challenge [WIP]
